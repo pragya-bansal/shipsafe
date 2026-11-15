@@ -1,36 +1,83 @@
-# ShipSafe MVP
+#  ShipSafe — Static Project Security Scanner
+Modern software projects often contain sensitive information and security weaknesses that developers may overlook while building or preparing their applications for sharing.
 
-A local-first static security scanner for ZIP archives of developer projects.
+Exposed API keys, hardcoded database credentials, insecure configurations, and unsafe code patterns can create security risks if they make their way into a shared repository or deployment.
 
-## Requirements
-- Node.js 20.9+ (Node 24 is fine)
+I built ShipSafe to explore how these issues could be identified early through an accessible, automated security-checking tool.
+
+The goal was to create a simple way for developers to upload a project archive, scan its files for common security issues, and understand what needs attention through clear explanations and suggested fixes.
+
+Through this project, I also wanted to gain practical experience with secure file handling, static code analysis, backend API development, and building a user-friendly security dashboard.
+
+##  Features
+
+- **ZIP-based scanning:** Upload software project archives for analysis.
+- **Secret detection:** Identifies potential exposure of API keys, database credentials, authentication secrets, and private keys.
+- **Code vulnerability detection:** Checks for potentially unsafe SQL queries, command injection, and dynamic code execution.
+- **Configuration checks:** Detects issues such as wildcard CORS, insecure HTTP requests, and unsafe cookie configurations.
+- **Security scoring:** Generates a preliminary security score based on detected findings.
+- **Actionable findings:** Displays severity, affected file, line number, explanation, and suggested remediation.
+- **Evidence redaction:** Hides sensitive values in displayed findings.
+- **Archive safety checks:** Applies limits and validation to uploaded ZIP archives.
+
+## The Tech Stack
+
+- Next.js
+- React
+- TypeScript
+- Node.js
+- CSS
+
+##  Getting Started
+
+### Prerequisites
+- Node.js
 - npm
 
-## Run
-1. Extract this folder.
-2. Open it in VS Code.
-3. In the terminal, run:
-   ```powershell
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/pragya-bansal/shipsafe.git
+   ```
+
+2. Navigate into the project:
+
+   ```bash
+   cd shipsafe
+   ```
+
+3. Install dependencies:
+
+   ```bash
    npm install
+   ```
+
+4. Start the development server:
+
+   ```bash
    npm run dev
    ```
-4. Open http://localhost:3000
 
-## What it checks
-- AWS access key IDs
-- GitHub tokens
-- OpenAI API keys
-- PEM private-key blocks
-- `.env`, `.env.local`, `.env.production`, `.env.development`
-- Firebase rules allowing unrestricted read/write
-- Supabase service-role JWTs
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Safety
-- ZIP entries are read in memory; uploaded code is never executed.
-- ZIP entry count, compressed size, total uncompressed size, and per-file size are limited.
-- Path traversal entries are rejected.
-- Secret values are redacted before results are returned.
-- This is a preliminary static scan, not a guarantee of security.
+## How It Works
 
-## Limitations
-This MVP scans the current contents of an uploaded ZIP. It does not inspect Git history, determine whether files are tracked by Git, or replace a professional security audit.
+1. Upload a ZIP archive containing a software project.
+2. ShipSafe validates the archive and filters files for scanning.
+3. Static detection rules inspect eligible files for potential security issues.
+4. Findings are categorized by severity.
+5. The dashboard displays the security score, affected files, evidence, and suggested fixes.
+
+## ⚠️ Limitations
+
+ShipSafe uses rule-based static analysis. It does not execute uploaded code or perform dynamic application testing or penetration testing.
+
+Its findings are preliminary indicators and may include false positives or miss vulnerabilities. A high security score does not guarantee that a project is secure.
+
+##  Author
+
+**Pragya Bansal**
+
+GitHub: [@pragya-bansal](https://github.com/pragya-bansal)
