@@ -19,7 +19,13 @@ Through this project, I also wanted to gain practical experience with secure fil
 - **Actionable findings:** Displays severity, affected file, line number, explanation, and suggested remediation.
 - **Evidence redaction:** Hides sensitive values in displayed findings.
 - **Archive safety checks:** Applies limits and validation to uploaded ZIP archives.
+## 📸 Screenshots
 
+### ShipSafe Dashboard
+![ShipSafe Dashboard](screenshots/dashboard.jpg)
+
+### Security Scan Results
+![ShipSafe Scan Results](screenshots/scan-results.jpg)
 ## The Tech Stack
 
 - Next.js
